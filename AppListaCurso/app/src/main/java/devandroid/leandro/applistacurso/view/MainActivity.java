@@ -3,6 +3,7 @@ package devandroid.leandro.applistacurso.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import devandroid.leandro.applistacurso.R;
 import devandroid.leandro.applistacurso.model.Pessoa;
@@ -53,15 +54,8 @@ public class MainActivity extends AppCompatActivity {
         dadosOutraPessoa += " Telefone de contato: ";
         dadosOutraPessoa += outraPessoa.getTelefoneContato();
 
-    }
+        Log.i("POOAndroid", pessoa.toString());
+        Log.i("POOAndroid", outraPessoa.toString());
 
-    @Override
-    public String toString() {
-        return "MainActivity{" +
-                "pessoa=" + pessoa +
-                ", outraPessoa=" + outraPessoa +
-                ", dadosPessoa='" + dadosPessoa + '\'' +
-                ", dadosOutraPessoa='" + dadosOutraPessoa + '\'' +
-                '}';
     }
 }
