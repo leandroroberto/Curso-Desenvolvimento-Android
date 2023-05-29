@@ -54,4 +54,14 @@ public class MainActivity extends AppCompatActivity {
         dadosOutraPessoa += outraPessoa.getTelefoneContato();
 
     }
+
+    @Override
+    public String toString() {
+        return "MainActivity{" +
+                "pessoa=" + pessoa +
+                ", outraPessoa=" + outraPessoa +
+                ", dadosPessoa='" + dadosPessoa + '\'' +
+                ", dadosOutraPessoa='" + dadosOutraPessoa + '\'' +
+                '}';
+    }
 }
