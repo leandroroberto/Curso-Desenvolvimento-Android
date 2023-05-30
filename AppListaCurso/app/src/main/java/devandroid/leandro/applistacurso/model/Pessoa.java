@@ -2,7 +2,6 @@ package devandroid.leandro.applistacurso.model;
 
 //Classe Pessoa
 public class Pessoa {
-
     //Atributos
     private String primeiroNome;
     private String sobrenome;
