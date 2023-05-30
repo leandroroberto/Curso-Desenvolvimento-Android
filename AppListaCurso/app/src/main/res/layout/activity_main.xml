@@ -8,9 +8,22 @@
 
     <EditText android:layout_height="48dp" android:layout_width="match_parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/editSobrenome" app:layout_constraintTop_toBottomOf="@+id/editNome" android:inputType="text" android:importantForAutofill="no" android:hint="@string/sobrenome" android:ems="10" android:layout_margin="16dp"/>
 
-    <EditText android:layout_height="48dp" android:layout_width="match_parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/editTelefone" app:layout_constraintTop_toBottomOf="@+id/editTelefone2" android:inputType="text" android:importantForAutofill="no" android:hint="@string/telefone_contato" android:ems="10" android:layout_margin="16dp"/>
+    <EditText android:layout_height="48dp" android:layout_width="match_parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/editTelefone" app:layout_constraintTop_toBottomOf="@+id/editCurso" android:inputType="text" android:importantForAutofill="no" android:hint="@string/telefone_contato" android:ems="10" android:layout_margin="16dp"/>
 
-    <EditText android:layout_height="48dp" android:layout_width="match_parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.875" app:layout_constraintEnd_toEndOf="parent" android:id="@+id/editTelefone2" app:layout_constraintTop_toBottomOf="@+id/editSobrenome" android:inputType="text" android:importantForAutofill="no" android:hint="@string/nome_curso" android:ems="10" android:layout_margin="16dp" android:layout_marginTop="64dp"/>
+    <EditText
+        android:id="@+id/editCurso"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_margin="16dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:hint="@string/nome_curso"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.875"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSobrenome" />
 
     <Button
         android:id="@+id/btnEnviar"
