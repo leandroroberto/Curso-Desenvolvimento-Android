@@ -2,6 +2,7 @@ package devandroid.leandro.applistacurso.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,9 @@ import devandroid.leandro.applistacurso.controller.PessoaController;
 import devandroid.leandro.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences preferences;
+    public static final String NOME_PREFERENCES = "pref_listavip";
 
     //Criando os objetos pessoa e outra pessoa e já instanciando ao mesmo tempo
     Pessoa pessoa = new Pessoa();
@@ -33,7 +37,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Instanciando a controladora
         PessoaController controller = new PessoaController();
+
+        //Atribuindo o valor a Preferences
+        preferences = getSharedPreferences(NOME_PREFERENCES, 0);
+        SharedPreferences.Editor listaVip = preferences.edit();
+
 
         //Atribuição a outraPessoa através do SETTER
         outraPessoa.setPrimeiroNome("Noah");
@@ -80,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
             pessoa.setCursoDesejado(editCurso.getText().toString());
             pessoa.setTelefoneContato(editTelefone.getText().toString());
             Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+            // Populando o objeto listavip do SharedPreferences com os dados mockados
+            listaVip.putString("Primeiro nome", pessoa.getPrimeiroNome());
+            listaVip.putString("Sobrenome", pessoa.getSobrenome());
+            listaVip.putString("Curso", pessoa.getCursoDesejado());
+            listaVip.putString("Telefone", pessoa.getTelefoneContato());
+            listaVip.apply();
 
             controller.salvar(pessoa);
 
