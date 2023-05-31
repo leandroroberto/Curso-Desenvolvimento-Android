@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import devandroid.leandro.applistacurso.R;
+import devandroid.leandro.applistacurso.controller.PessoaController;
 import devandroid.leandro.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PessoaController controller = new PessoaController();
 
         //Atribuição a outraPessoa através do SETTER
         outraPessoa.setPrimeiroNome("Noah");
@@ -77,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
             pessoa.setCursoDesejado(editCurso.getText().toString());
             pessoa.setTelefoneContato(editTelefone.getText().toString());
             Toast.makeText(MainActivity.this, "Salvo " + pessoa.toString(), Toast.LENGTH_LONG).show();
+
+            controller.salvar(pessoa);
+
         });
     }
 }
