@@ -17,9 +17,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences preferences;
     public static final String NOME_PREFERENCES = "pref_listavip";
 
-    //Criando os objetos pessoa e outra pessoa e já instanciando ao mesmo tempo
-    Pessoa pessoa = new Pessoa();
-    Pessoa outraPessoa = new Pessoa();
+
 
     //Instanciando os EditText do projeto
     EditText editPrimeiroNome;
@@ -38,18 +36,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Instanciando a controladora
-        PessoaController controller = new PessoaController();
+        PessoaController controller;
+        controller = new PessoaController();
 
         //Atribuindo o valor a Preferences
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
         SharedPreferences.Editor listaVip = preferences.edit();
 
+        //Criando os objetos pessoa já instanciando ao mesmo tempo
+        Pessoa pessoa = new Pessoa();
 
-        //Atribuição a outraPessoa através do SETTER
-        outraPessoa.setPrimeiroNome("Noah");
-        outraPessoa.setSobrenome("Gabriel");
-        outraPessoa.setCursoDesejado("Java");
-        outraPessoa.setTelefoneContato("11-965829383");
+        //Inserindo dados na classe Pessoa a partir dos dados salvos no arquivo do SharedPreferences
+        pessoa.setPrimeiroNome(preferences.getString("Primeiro nome", ""));
+        pessoa.setSobrenome(preferences.getString("Sobrenome", ""));
+        pessoa.setCursoDesejado(preferences.getString("Telefone", ""));
+        pessoa.setTelefoneContato(preferences.getString("Curso", ""));
 
         //Referenciando cada variável de EditText ao seu ID
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
@@ -57,17 +58,16 @@ public class MainActivity extends AppCompatActivity {
         editCurso = findViewById(R.id.editCurso);
         editTelefone = findViewById(R.id.editTelefone);
 
+        //Recuperando os dados da classe Pessoa e setando os campos com eles
+        editPrimeiroNome.setText(pessoa.getPrimeiroNome());
+        editSobrenome.setText(pessoa.getSobrenome());
+        editCurso.setText(pessoa.getCursoDesejado());
+        editTelefone.setText(pessoa.getTelefoneContato());
+
         //Referenciando cada variável dos botões ao seu ID
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
-
-        //Pegando os dados da classe e atribuindo ao texto dos editText
-        //Através dos Getters.
-        editPrimeiroNome.setText(outraPessoa.getPrimeiroNome());
-        editSobrenome.setText(outraPessoa.getSobrenome());
-        editCurso.setText(outraPessoa.getCursoDesejado());
-        editTelefone.setText(outraPessoa.getTelefoneContato());
 
         //Método de click do botão Limpar
         btnLimpar.setOnClickListener(v -> {
