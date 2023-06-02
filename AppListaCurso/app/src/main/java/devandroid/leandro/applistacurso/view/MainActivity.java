@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
     public static final String NOME_PREFERENCES = "pref_listavip";
-
+    SharedPreferences.Editor listaVip;
 
 
     //Instanciando os EditText do projeto
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Atribuindo o valor a Preferences
         preferences = getSharedPreferences(NOME_PREFERENCES, 0);
-        SharedPreferences.Editor listaVip = preferences.edit();
+        listaVip = preferences.edit();
 
         //Criando os objetos pessoa já instanciando ao mesmo tempo
         Pessoa pessoa = new Pessoa();
@@ -75,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
             editSobrenome.setText("");
             editCurso.setText("");
             editTelefone.setText("");
+            listaVip.clear();
+            listaVip.apply();
         });
 
         //Método do click do botão Finalizar
