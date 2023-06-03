@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
             listaVip.apply();
         });
 
-        //Método do click do botão Finalizar
+        //Método do click do botão Salvar
         btnFinalizar.setOnClickListener(v -> {
             Toast.makeText(MainActivity.this, "Finalizando aplicativo", Toast.LENGTH_LONG).show();
             finish();
