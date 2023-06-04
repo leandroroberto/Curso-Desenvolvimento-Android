@@ -5,8 +5,13 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
+
 import devandroid.leandro.applistacurso.R;
+import devandroid.leandro.applistacurso.controller.CursoController;
 import devandroid.leandro.applistacurso.controller.PessoaController;
+import devandroid.leandro.applistacurso.model.Curso;
 import devandroid.leandro.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,20 +27,26 @@ public class MainActivity extends AppCompatActivity {
     Button btnSalvar;
     Button btnFinalizar;
 
+    //Criando os objetos pessoa já instanciando ao mesmo tempo
+    Pessoa pessoa;
+    List<Curso> listaDeCursos;
+
     // Instanciando a controladora
     PessoaController controller;
+    CursoController cursoController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Criando os objetos pessoa já instanciando ao mesmo tempo
-        Pessoa pessoa;
-
         controller = new PessoaController(MainActivity.this);
         pessoa = new Pessoa();
         controller.buscar(pessoa);
+
+        cursoController = new CursoController();
+        listaDeCursos = cursoController.getListaDeCursos();
+        
 
         //Referenciando cada variável de EditText ao seu ID
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
