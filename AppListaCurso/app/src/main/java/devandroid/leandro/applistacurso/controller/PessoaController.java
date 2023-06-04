@@ -2,9 +2,7 @@ package devandroid.leandro.applistacurso.controller;
 
 import android.content.SharedPreferences;
 import android.util.Log;
-
 import androidx.annotation.NonNull;
-
 import devandroid.leandro.applistacurso.model.Pessoa;
 import devandroid.leandro.applistacurso.view.MainActivity;
 
@@ -41,6 +39,7 @@ public class PessoaController {
     }
 
     public Pessoa buscar(Pessoa pessoa) {
+
         //Inserindo dados na classe Pessoa a partir dos dados salvos no arquivo do SharedPreferences
         pessoa.setPrimeiroNome(preferences.getString("Primeiro nome", ""));
         pessoa.setSobrenome(preferences.getString("Sobrenome", ""));
@@ -53,4 +52,5 @@ public class PessoaController {
         listaVip.clear();
         listaVip.apply();
     }
+
 }
