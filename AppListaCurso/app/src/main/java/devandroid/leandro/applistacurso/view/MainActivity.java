@@ -4,14 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import devandroid.leandro.applistacurso.R;
 import devandroid.leandro.applistacurso.controller.CursoController;
 import devandroid.leandro.applistacurso.controller.PessoaController;
-import devandroid.leandro.applistacurso.model.Curso;
 import devandroid.leandro.applistacurso.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     EditText editTelefone;
     EditText editCurso;
 
+    //Instanciando o spinner
+    Spinner spinner;
+
     //Instanciando os botões do projeto
     Button btnLimpar;
     Button btnSalvar;
@@ -29,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Criando os objetos pessoa já instanciando ao mesmo tempo
     Pessoa pessoa;
-    List<Curso> listaDeCursos;
+    ArrayList<List> nomeDosCursos;
 
     // Instanciando a controladora
     PessoaController controller;
@@ -45,19 +49,24 @@ public class MainActivity extends AppCompatActivity {
         controller.buscar(pessoa);
 
         cursoController = new CursoController();
-        listaDeCursos = cursoController.getListaDeCursos();
-        
+        nomeDosCursos = cursoController.listaParaSpinner();
+
 
         //Referenciando cada variável de EditText ao seu ID
         editPrimeiroNome = findViewById(R.id.editPrimeiroNome);
         editSobrenome = findViewById(R.id.editSobrenome);
         editCurso = findViewById(R.id.editCurso);
         editTelefone = findViewById(R.id.editTelefone);
+        spinner = findViewById(R.id.spinner);
 
         //Referenciando cada variável dos botões ao seu ID
         btnLimpar = findViewById(R.id.btnLimpar);
         btnSalvar = findViewById(R.id.btnSalvar);
         btnFinalizar = findViewById(R.id.btnFinalizar);
+
+        //Adapter
+        //Layout
+        //Injetar adapter ao spinner - A Lista será gerada
 
         editPrimeiroNome.setText(pessoa.getPrimeiroNome());
         editSobrenome.setText(pessoa.getSobrenome());
